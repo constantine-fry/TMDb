@@ -66,7 +66,10 @@ extension TMDbAPIClient {
 private extension TMDbError {
 
     init?(response: URLResponse) {
-        let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+          self = .unknown
+          return
+        }
         guard statusCode != 200 else {
             return nil
         }
@@ -79,7 +82,7 @@ private extension TMDbError {
             self = .notFound
 
         default:
-            self = .unknown
+            self = .serverError(statusCode: statusCode)
         }
     }
 

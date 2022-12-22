@@ -10,6 +10,8 @@ public enum TMDbError: Error {
     /// Not found.
     case notFound
     /// Unknown error.
+    case serverError(statusCode: Int)
+    /// Unknown error.
     case unknown
     /// Data decode error.
     case decode(Error)
@@ -34,6 +36,9 @@ extension TMDbError: LocalizedError {
 
         case .decode:
             return "Data Decode Error"
+          
+        case .serverError(let statusCode):
+            return "Server Error \(statusCode)"
         }
     }
 
