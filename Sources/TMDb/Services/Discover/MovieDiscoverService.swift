@@ -16,15 +16,17 @@ public protocol MovieDiscoverService {
     ///     - page: The page of results to return.
     ///
     /// - Returns: Matching movies as a pageable list.
-    func movies(sortedBy: MovieSort?, withPeople people: [Person.ID]?, page: Int?) async throws -> MoviePageableList
+    func movies(sortedBy: MovieSort?, withPeople people: [Person.ID]?, withGenres: [Genre.ID]?, page: Int?) async throws -> MoviePageableList
 
 }
 
 public extension MovieDiscoverService {
 
-    func movies(sortedBy: MovieSort? = nil, withPeople people: [Person.ID]? = nil,
+    func movies(sortedBy: MovieSort? = nil,
+                withPeople people: [Person.ID]? = nil,
+                withGenres genres: [Genre.ID]? = nil,
                 page: Int? = nil) async throws -> MoviePageableList {
-        try await movies(sortedBy: sortedBy, withPeople: people, page: page)
+        try await movies(sortedBy: sortedBy, withPeople: people, withGenres: genres, page: page)
     }
 
 }

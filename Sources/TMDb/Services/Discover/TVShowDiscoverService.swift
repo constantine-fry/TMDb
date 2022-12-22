@@ -15,14 +15,16 @@ public protocol TVShowDiscoverService {
     ///     - page: The page of results to return.
     ///
     /// - Returns: Matching TV shows as a pageable list.
-    func tvShows(sortedBy: TVShowSort?, page: Int?) async throws -> TVShowPageableList
+    func tvShows(sortedBy: TVShowSort?, withGenres: [Genre.ID]?, page: Int?) async throws -> TVShowPageableList
 
 }
 
 public extension TVShowDiscoverService {
 
-    func tvShows(sortedBy: TVShowSort? = nil, page: Int? = nil) async throws -> TVShowPageableList {
-        try await tvShows(sortedBy: sortedBy, page: page)
+    func tvShows(sortedBy: TVShowSort? = nil,
+                 withGenres genres: [Genre.ID]? = nil,
+                 page: Int? = nil) async throws -> TVShowPageableList {
+        try await tvShows(sortedBy: sortedBy, withGenres: genres, page: page)
     }
 
 }

@@ -8,12 +8,12 @@ final class TMDbDiscoverService: DiscoverService {
         self.apiClient = apiClient
     }
 
-    func movies(sortedBy: MovieSort?, withPeople people: [Person.ID]?, page: Int?) async throws -> MoviePageableList {
-        try await apiClient.get(endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, page: page))
+    func movies(sortedBy: MovieSort?, withPeople people: [Person.ID]?, withGenres genres: [Genre.ID]? = nil, page: Int?) async throws -> MoviePageableList {
+        try await apiClient.get(endpoint: DiscoverEndpoint.movies(sortedBy: sortedBy, people: people, genres: genres, page: page))
     }
 
-    func tvShows(sortedBy: TVShowSort?, page: Int?) async throws -> TVShowPageableList {
-        try await apiClient.get(endpoint: DiscoverEndpoint.tvShows(sortedBy: sortedBy, page: page))
+    func tvShows(sortedBy: TVShowSort?, withGenres genres: [Genre.ID]? = nil, page: Int?) async throws -> TVShowPageableList {
+        try await apiClient.get(endpoint: DiscoverEndpoint.tvShows(sortedBy: sortedBy, genres: genres, page: page))
     }
 
 }
