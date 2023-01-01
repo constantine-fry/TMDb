@@ -81,7 +81,7 @@ final class URLQueryItemTests: XCTestCase {
 
     func testAppendingImageLanguageWithLocaleReturnsURL() {
         let locale = Locale(identifier: "en_GB")
-        let expectedResult = URL(string: "/some/path?include_image_language=en,null")
+        let expectedResult = URL(string: "/some/path?include_image_language=en")
 
         let result = URL(string: "/some/path")!.appendingImageLanguage(locale: locale)
 
@@ -99,7 +99,7 @@ final class URLQueryItemTests: XCTestCase {
 
     func testAppendingImageLanguageWithLocaleWithoutRegionCodeReturnsURL() {
         let locale = Locale(identifier: "en")
-        let expectedResult = URL(string: "/some/path?include_image_language=en,null")!
+        let expectedResult = URL(string: "/some/path?include_image_language=en")!
 
         let result = URL(string: "/some/path")!.appendingImageLanguage(locale: locale)
 
@@ -108,7 +108,7 @@ final class URLQueryItemTests: XCTestCase {
 
     func testAppendingImageLanguageWithLocaleWhenContainsQueryItemsReturnsURL() {
         let locale = Locale(identifier: "en_GB")
-        let expectedResult = URL(string: "/some/path?a=b&include_image_language=en,null")!
+        let expectedResult = URL(string: "/some/path?a=b&include_image_language=en")!
 
         let result = URL(string: "/some/path?a=b")!.appendingImageLanguage(locale: locale)
 
@@ -117,7 +117,7 @@ final class URLQueryItemTests: XCTestCase {
 
     func testAppendingVideoLanguageWithLocaleReturnsURL() {
         let locale = Locale(identifier: "en_GB")
-        let expectedResult = URL(string: "/some/path?include_video_language=en,null")
+        let expectedResult = URL(string: "/some/path?include_video_language=en")
 
         let result = URL(string: "/some/path")!.appendingVideoLanguage(locale: locale)
 
@@ -135,7 +135,7 @@ final class URLQueryItemTests: XCTestCase {
 
     func testAppendingVideoLanguageWithLocaleWithoutRegionCodeReturnsURL() {
         let locale = Locale(identifier: "en")
-        let expectedResult = URL(string: "/some/path?include_video_language=en,null")!
+        let expectedResult = URL(string: "/some/path?include_video_language=en")!
 
         let result = URL(string: "/some/path")!.appendingVideoLanguage(locale: locale)
 
@@ -144,7 +144,7 @@ final class URLQueryItemTests: XCTestCase {
 
     func testAppendingVideoLanguageWithLocaleWhenContainsQueryItemsReturnsURL() {
         let locale = Locale(identifier: "en_GB")
-        let expectedResult = URL(string: "/some/path?a=b&include_video_language=en,null")!
+        let expectedResult = URL(string: "/some/path?a=b&include_video_language=en")!
 
         let result = URL(string: "/some/path?a=b")!.appendingVideoLanguage(locale: locale)
 

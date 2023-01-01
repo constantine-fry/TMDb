@@ -47,23 +47,14 @@ extension URL {
             return self
         }
 
-        let value = [languageCode, "null"]
-            .map(\.description)
-            .joined(separator: ",")
-
-        return appendingQueryItem(name: QueryItemName.imageLanguage, value: value)
+        return appendingQueryItem(name: QueryItemName.imageLanguage, value: languageCode)
     }
 
     func appendingVideoLanguage(locale: Locale = .current) -> Self {
         guard let languageCode = locale.languageCode else {
             return self
         }
-
-        let value = [languageCode, "null"]
-            .map(\.description)
-            .joined(separator: ",")
-
-        return appendingQueryItem(name: QueryItemName.videoLanguage, value: value)
+        return appendingQueryItem(name: QueryItemName.videoLanguage, value: languageCode)
     }
 
     func appendingPage(_ page: Int?) -> Self {
