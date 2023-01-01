@@ -85,14 +85,14 @@ final class TMDbAPIClientTests: XCTestCase {
         XCTFail("Expected not found error to be thrown")
     }
 
-    func testGetWhenResponseStatusCodeIs500ReturnsUnknownError() async throws {
+    func testGetWhenResponseStatusCodeIs500ReturnsServerError() async throws {
         MockURLProtocol.responseStatusCode = 500
 
         do {
            _ = try await apiClient.get(path: URL(string: "/error")!) as String
         } catch let error as TMDbError {
             switch error {
-            case .unknown:
+            case .serverError:
                 XCTAssertTrue(true)
                 return
             default:
@@ -100,7 +100,7 @@ final class TMDbAPIClientTests: XCTestCase {
             }
         }
 
-        XCTFail("Expected unknown error to be thrown")
+        XCTFail("Expected server error to be thrown")
     }
 
     func testGetWhenResponseHasValidDataReturnsDecodedObject() async throws {
