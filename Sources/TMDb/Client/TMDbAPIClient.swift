@@ -53,6 +53,7 @@ extension TMDbAPIClient {
         return urlComponents.url!
             .appendingAPIKey(apiKey)
             .appendingLanguage()
+            .appendingRegion()
     }
 
     private func validate(response: URLResponse) throws {
